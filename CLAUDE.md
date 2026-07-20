@@ -27,13 +27,14 @@ npm run build:server       # tsc build of server -> server/dist
 npm run build:web          # next build
 ```
 
-Database (run from `server/`, requires `DATABASE_URL` in `server/.env`):
+Database:
 
 ```
+docker compose up -d                         # start local PostgreSQL (see docker-compose.yml)
 npm run prisma:generate --workspace server   # regenerate Prisma client after schema changes
 npm run prisma:migrate --workspace server    # create/apply a dev migration
 ```
 
-Env setup: copy `server/.env.example` to `server/.env` and `web/.env.example` to `web/.env` before running dev servers.
+Env setup: copy `server/.env.example` to `server/.env` and `web/.env.example` to `web/.env` before running dev servers. The default `DATABASE_URL` in `server/.env.example` matches the credentials in `docker-compose.yml`.
 
 No test runner or lint config is set up yet — add one before writing tests and update this section with the actual commands (including how to run a single test).
